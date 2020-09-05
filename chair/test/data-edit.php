@@ -123,7 +123,7 @@ $categories = $pdo->query($g_sql)->fetchAll();
                                 <?php foreach ($categories as $key => $s) : ?>
 
 
-                                    <option value="<?= $s['name'] ?>" <?= ($rows['categories_sid'] == $key + 1) ? 'selected' : '' ?>>
+                                    <option value="<?= $s['sid'] ?>" <?= ($rows['categories_sid'] == $key + 1) ? 'selected' : '' ?>>
                                         <?= $s['name'] ?>
                                     </option>
 
@@ -187,15 +187,17 @@ $categories = $pdo->query($g_sql)->fetchAll();
 
         if (isPass) {
             const fd = new FormData(document.form1);
-
+            console.log('pass');
             fetch('data-edit-api.php', {
                     method: 'POST',
                     body: fd
                 })
-                .then(r => r.text())
+                .then(r => r.json())
                 .then(obj => {
-                    console.log(obj);
+                    console.log('obj', obj);
+                    console.log('obj.success', obj.success);
                     if (obj.success) {
+                        console.log('成功');
                         infobar.innerHTML = '修改成功';
                         infobar.className = "alert alert-success";
 
@@ -203,6 +205,7 @@ $categories = $pdo->query($g_sql)->fetchAll();
                             location.href = 'data-list.php';
                         }, 2000)
                     } else {
+                        console.log('失敗');
                         infobar.innerHTML = obj.error || '修改失敗';
                         infobar.className = "alert alert-danger";
 
@@ -211,6 +214,7 @@ $categories = $pdo->query($g_sql)->fetchAll();
                     infobar.style.display = 'block';
                 });
         } else {
+            console.log('其他');
             submitBtn.style.display = 'block';
         }
     }

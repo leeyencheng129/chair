@@ -4,12 +4,12 @@ require __DIR__ . '/parts/__admin_required.php';
 header('Content-Type: application/json');
 
 
-// $output = [
-//     'success' => false,
-//     'postData' => $_POST,
-//     'code' => 0,
-//     'error' => ''
-// ];
+$output = [
+    'success' => false,
+    'postData' => $_POST,
+    'code' => 0,
+    'error' => ''
+];
 
 // TODO: 檢查資料格式
 // email_pattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
