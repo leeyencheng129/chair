@@ -89,12 +89,9 @@ $categories = $pdo->query($g_sql)->fetchAll();
 
                         <div class="form-group">
                             <label for="conditions_sid">商品狀況</label><br>
-                            <?php foreach ($cates as $c) : ?>
+                            <?php foreach ($cates as $key => $c) : ?>
                                 <div class="form-check form-check-inline">
-
-                                    <input class="form-check-input" type="radio" name="conditions_sid" id="conditions_sid<?= $c['sid'] ?>" value="<?= $c['sid'] ?>">
-
-
+                                    <input class="form-check-input" type="radio" name="conditions_sid" id="conditions_sid<?= $c['sid'] ?>" value="<?= $c['sid'] ?>" <?= ($rows['conditions_sid'] == $key + 1) ? 'checked' : '' ?>>
 
                                     <label class="form-check-label" for="conditions_sid<?= $c['sid'] ?>"><?= $c['name'] ?></label>
                                 </div>
@@ -102,19 +99,18 @@ $categories = $pdo->query($g_sql)->fetchAll();
                         </div>
                         <div class="form-group">
                             <label for="framework_sid">骨架</label><br>
-                            <?php foreach ($framework as $b) : ?>
+                            <?php foreach ($framework as $key => $b) : ?>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="framework_sid" value="<?= htmlentities($rows['framework_sid']) ?>" id="framework_sid<?= $b['sid'] ?>" value="<?= $b['sid'] ?>">
+                                    <input class="form-check-input" type="radio" name="framework_sid" value="<?= htmlentities($rows['framework_sid']) ?>" id="framework_sid<?= $b['sid'] ?>" value="<?= $b['sid'] ?>" <?= ($rows['framework_sid'] == $key + 1) ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="framework_sid<?= $b['sid'] ?>"><?= $b['name'] ?></label>
                                 </div>
                             <?php endforeach; ?>
                         </div>
                         <div class="form-group">
                             <label for="material_sid">材質</label><br>
-                            <?php foreach ($material as $m) : ?>
+                            <?php foreach ($material as $key => $m) : ?>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" <?php //echo $row['category_sid']== $c['sid'] ? 'checked' : ''                                  
-                                                                                    ?> name="material_sid" value="<?= htmlentities($rows['material_sid']) ?>" id="material_sid<?= $m['sid'] ?>" value="<?= $m['sid'] ?>">
+                                    <input class="form-check-input" type="radio" name="material_sid" value="<?= htmlentities($rows['material_sid']) ?>" id="material_sid<?= $m['sid'] ?>" value="<?= $m['sid'] ?>" <?= ($rows['framework_sid'] == $key + 1) ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="material_sid<?= $m['sid'] ?>"><?= $m['name'] ?></label>
                                 </div>
                             <?php endforeach; ?>
@@ -124,12 +120,11 @@ $categories = $pdo->query($g_sql)->fetchAll();
                             <label for="categories_sid">分類</label>
                             <select class="form-control" id="categories_sid" name="categories_sid" value="<?= htmlentities($rows['categories_sid']) ?>">
 
-                                <?php foreach ($categories as $s) : ?>
+                                <?php foreach ($categories as $key => $s) : ?>
 
 
-                                    <option value=" <?= $s['name'] ?>"><?= $rows['categories_sid'] == $s['name'] ? 'selected' : '' ?><?= $s['name'] ?>
-
-
+                                    <option value="<?= $s['name'] ?>" <?= ($rows['categories_sid'] == $key + 1) ? 'selected' : '' ?>>
+                                        <?= $s['name'] ?>
                                     </option>
 
 
