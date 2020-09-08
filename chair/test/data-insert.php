@@ -184,7 +184,7 @@ $categories = $pdo->query($g_sql)->fetchAll();
                             location.href = 'data-list.php';
                         }, 2000)
                     } else {
-                        infobar.innerHTML = obj.error || '新增失敗';
+                        infobar.innerHTML = obj.error || '新增成功';
                         infobar.className = "alert alert-success";
 
                         submitBtn.style.display = 'block';
